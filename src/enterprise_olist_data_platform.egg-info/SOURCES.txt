@@ -14,3 +14,4 @@ src/enterprise_olist_data_platform.egg-info/dependency_links.txt
 src/enterprise_olist_data_platform.egg-info/requires.txt
 src/enterprise_olist_data_platform.egg-info/top_level.txt
 tests/test_config.py
+tests/test_reader.py

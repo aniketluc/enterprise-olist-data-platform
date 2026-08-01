@@ -25,16 +25,19 @@ from writer import (
     write_bronze,
 )
 
+from utils import get_logger
 
 def main():
 
     spark = get_spark_session()
+    
+    logger = get_logger("bronze_ingestion")
 
     batch_id = str(uuid.uuid4())
 
     for table_name, file_name in TABLES.items():
 
-        print(f"\nProcessing {table_name}")
+        logger.info(f"Processing {table_name}")
 
         file_path = RAW_DATA_PATH / file_name
 
@@ -60,7 +63,7 @@ def main():
             output_path=output_path,
         )
 
-        print(f"{table_name} completed successfully.")
+        logger.info(f"{table_name} completed successfully.")
 
     spark.stop()
 

@@ -4,7 +4,8 @@ Version: 0.1.0
 Summary: nterprise End-to-End Data Engineering Project using the Olist E-Commerce Dataset
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
-Requires-Dist: pyspark>=4.2.0
+Requires-Dist: delta-spark==3.2.0
+Requires-Dist: pyspark==3.5.1
 
 # Enterprise Olist Data Platform
 
