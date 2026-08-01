@@ -1,0 +1,31 @@
+Metadata-Version: 2.4
+Name: enterprise-olist-data-platform
+Version: 0.1.0
+Summary: nterprise End-to-End Data Engineering Project using the Olist E-Commerce Dataset
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pyspark>=4.2.0
+
+# Enterprise Olist Data Platform
+
+An industry-level End-to-End Data Engineering project built using the Brazilian E-Commerce Public Dataset by Olist.
+
+## Tech Stack
+
+- Python
+- SQL
+- PySpark
+- Databricks
+- Apache Airflow
+- AWS S3
+- Snowflake
+- dbt Core
+- Docker
+- Terraform
+- GitHub Actions
+
+## Architecture
+
+Bronze → Silver → Gold (Medallion Architecture)
+
+> 🚧 Project currently under development.
