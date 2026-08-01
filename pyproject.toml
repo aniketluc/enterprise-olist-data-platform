@@ -1,0 +1,15 @@
+[project]
+name = "enterprise-olist-data-platform"
+version = "0.1.0"
+description = "nterprise End-to-End Data Engineering Project using the Olist E-Commerce Dataset"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.1",
+]
