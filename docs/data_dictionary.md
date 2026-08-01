@@ -2,14 +2,43 @@
 
 ## customers
 
-Primary Key:
-- customer_id
+PRows:
+99441
 
-Important Columns:
-- customer_unique_id
-- customer_zip_code_prefix
-- customer_city
-- customer_state
+**Business Purpose:**
+Stores customer information for each order.
+
+**Source File:**
+olist_customers_dataset.csv
+
+**Row Count:**
+<Fill after profiling>
+
+**Column Count:**
+<Fill after profiling>
+
+**Primary Key:**
+customer_id
+
+**Candidate Foreign Keys:**
+customer_id → orders.customer_id
+
+**Columns:**
+
+| Column Name | Data Type | Nullable | Description |
+|-------------|----------|----------|-------------|
+| customer_id | string | No | Unique customer identifier |
+| customer_unique_id | string | No | Unique customer across multiple orders |
+| customer_zip_code_prefix | integer | No | ZIP code prefix |
+| customer_city | string | No | Customer city |
+| customer_state | string | No | Customer state |
+
+**Nullable Columns:**
+- None (update after profiling if needed)
+
+**Important Observations:**
+- No duplicate customer_id (verify from profiling)
+- customer_unique_id can appear multiple times because one customer may place multiple orders
 
 ---
 
