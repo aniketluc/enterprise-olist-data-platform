@@ -1,6 +1,8 @@
 README.md
 pyproject.toml
 src/__init__.py
+src/bronze/__init__.py
+src/bronze/audit.py
 src/bronze/bronze_ingestion.py
 src/bronze/config.py
 src/bronze/reader.py

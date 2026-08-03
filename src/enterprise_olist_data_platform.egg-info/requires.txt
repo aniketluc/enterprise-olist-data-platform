@@ -1,2 +1,4 @@
+boto3>=1.43.62
 delta-spark==3.2.0
 pyspark==3.5.1
+python-dotenv>=1.2.2

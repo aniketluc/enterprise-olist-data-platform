@@ -1,31 +1,33 @@
 import uuid
 
-from config import (
+from src.bronze.config import (
     RAW_DATA_PATH,
     BRONZE_DATA_PATH,
     TABLES,
     BRONZE_TABLES,
 )
 
-from reader import (
+from src.bronze.reader import (
     get_spark_session,
     read_csv,
 )
 
-from validator import (
+from src.bronze.validator import (
     validate_file_exists,
     validate_dataframe_not_empty,
 )
 
-from transformer import (
+from src.bronze.transformer import (
     add_metadata_columns,
 )
 
-from writer import (
+from src.bronze.writer import (
     write_bronze,
 )
 
-from utils import get_logger
+from src.bronze.utils import (
+    get_logger,
+)
 
 def main():
 

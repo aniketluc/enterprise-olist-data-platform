@@ -1,4 +1,6 @@
-from pyspark.sql import SparkSession
+from pathlib import Path
+
+from pyspark.sql import SparkSession, DataFrame
 from delta import configure_spark_with_delta_pip
 
 
@@ -20,3 +22,24 @@ def get_spark_session(app_name: str = "BronzeIngestion") -> SparkSession:
     spark = configure_spark_with_delta_pip(builder).getOrCreate()
 
     return spark
+
+
+def read_csv(
+    spark: SparkSession,
+    file_path: Path,
+    infer_schema: bool = True,
+    header: bool = True,
+) -> DataFrame:
+    """
+    Read a CSV file into a Spark DataFrame.
+    """
+
+    if not file_path.exists():
+        raise FileNotFoundError(f"File not found: {file_path}")
+
+    return (
+        spark.read
+        .option("header", header)
+        .option("inferSchema", infer_schema)
+        .csv(str(file_path))
+    )
