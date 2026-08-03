@@ -1,17 +1,17 @@
 [project]
 name = "enterprise-olist-data-platform"
 version = "0.1.0"
-description = "nterprise End-to-End Data Engineering Project using the Olist E-Commerce Dataset"
+description = "Enterprise End-to-End Data Engineering Project using the Olist E-Commerce Dataset"
 readme = "README.md"
 requires-python = ">=3.10"
+
 dependencies = [
     "boto3>=1.43.62",
     "delta-spark==3.2.0",
     "pyspark==3.5.1",
     "python-dotenv>=1.2.2",
+    "snowflake-connector-python>=4.7.1",
 ]
-[tool.uv]
-package = true
 
 [dependency-groups]
 dev = [
