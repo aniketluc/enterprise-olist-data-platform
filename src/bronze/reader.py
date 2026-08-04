@@ -1,3 +1,5 @@
+import os
+import sys
 from pathlib import Path
 
 from pyspark.sql import SparkSession, DataFrame
@@ -5,6 +7,10 @@ from delta import configure_spark_with_delta_pip
 
 
 def get_spark_session(app_name: str = "BronzeIngestion") -> SparkSession:
+    os.environ["PYSPARK_PYTHON"] = sys.executable
+    os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+
+    print("Using Python:", sys.executable)
     builder = (
         SparkSession.builder
         .appName(app_name)

@@ -12,6 +12,10 @@ RAW_DATA_PATH = DATA_DIR / "raw"
 
 BRONZE_DATA_PATH = DATA_DIR / "bronze"
 
+SILVER_DATA_PATH = DATA_DIR / "silver"
+
+GOLD_DATA_PATH = DATA_DIR / "gold"
+
 # -----------------------------------------------------------------------------
 # Olist Dataset Mapping
 # -----------------------------------------------------------------------------

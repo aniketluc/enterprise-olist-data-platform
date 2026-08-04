@@ -22,3 +22,4 @@ print(cursor.fetchone())
 
 cursor.close()
 conn.close()
+
