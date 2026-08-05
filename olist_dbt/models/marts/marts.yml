@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: customer_sales_summary
+    description: "Customer sales metrics"
+
+  - name: seller_performance
+    description: "Seller information"
+
+  - name: product_sales_summary
+    description: "Product information"
+
+  - name: sales_summary
+    description: "Overall sales metrics"

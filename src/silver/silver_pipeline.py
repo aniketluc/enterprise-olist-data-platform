@@ -82,6 +82,7 @@ from src.silver.transformer import (
     transform_products,
     transform_sellers,
     transform_payments,
+    transform_order_items,
 )
 
 from src.silver.validator import validate_dataframe
@@ -99,7 +100,8 @@ def main():
         ("products", transform_products, "product_id"),
         ("sellers", transform_sellers, "seller_id"),
         ("payments", transform_payments, "order_id"),
-    ]
+        ("order_items", transform_order_items, "order_id"),
+    ]   
 
     for name, transformer, primary_key in datasets:
 

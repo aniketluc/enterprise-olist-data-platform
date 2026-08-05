@@ -52,3 +52,16 @@ def transform_payments(df: DataFrame) -> DataFrame:
     return (
         df.dropDuplicates()
     )
+    
+def transform_order_items(df: DataFrame) -> DataFrame:
+    """
+    Apply Silver transformations to Order Items data.
+    """
+
+    return (
+        df
+        .dropDuplicates()
+        .filter(col("order_id").isNotNull())
+        .filter(col("product_id").isNotNull())
+        .filter(col("seller_id").isNotNull())
+    )

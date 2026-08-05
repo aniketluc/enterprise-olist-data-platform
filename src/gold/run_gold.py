@@ -10,6 +10,7 @@ from src.gold.gold_transformation import (
     create_dim_sellers,
     create_fact_orders,
     create_fact_payments,
+    create_fact_order_items,
 )
 
 
@@ -22,6 +23,7 @@ def main():
     sellers = read_delta(spark, SILVER_DATA_PATH / "sellers")
     orders = read_delta(spark, SILVER_DATA_PATH / "orders")
     payments = read_delta(spark, SILVER_DATA_PATH / "payments")
+    order_items = read_delta(spark,SILVER_DATA_PATH / "order_items")
 
     write_silver(
         create_dim_customers(customers),
@@ -46,6 +48,10 @@ def main():
     write_silver(
         create_fact_payments(payments),
         GOLD_DATA_PATH / "fact_payments",
+    )
+    write_silver(
+        create_fact_order_items(order_items),
+        GOLD_DATA_PATH / "fact_order_items",
     )
 
     spark.stop()

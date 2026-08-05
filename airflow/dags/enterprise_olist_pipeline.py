@@ -1,7 +1,8 @@
-from airflow import DAG
-from airflow.operators.empty import EmptyOperator
-from airflow.operators.bash import BashOperator
 from datetime import datetime
+
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.operators.empty import EmptyOperator
 
 default_args = {
     "owner": "Aniket",
@@ -23,31 +24,59 @@ with DAG(
     )
 
     upload_to_s3 = BashOperator(
-    task_id="upload_raw_data_to_s3",
-    bash_command="""
-    cd /opt/airflow/project &&
-    python ingestion/load/upload_to_s3.py
-    """
+        task_id="upload_raw_data_to_s3",
+        bash_command="""
+        cd /opt/airflow/project &&
+        python ingestion/load/upload_to_s3.py
+        """
     )
 
-    bronze = EmptyOperator(
-        task_id="bronze_ingestion"
+    bronze = BashOperator(
+        task_id="bronze_ingestion",
+        bash_command="""
+        cd /opt/airflow/project &&
+        python -m src.bronze.bronze_ingestion
+        """
     )
 
-    silver = EmptyOperator(
-        task_id="silver_transformation"
+    silver = BashOperator(
+        task_id="silver_transformation",
+        bash_command="""
+        cd /opt/airflow/project &&
+        python -m src.silver.silver_pipeline
+        """
     )
 
-    gold = EmptyOperator(
-        task_id="gold_transformation"
+    gold = BashOperator(
+        task_id="gold_transformation",
+        bash_command="""
+        cd /opt/airflow/project &&
+        python -m src.gold.run_gold
+        """
     )
 
-    snowflake = EmptyOperator(
-        task_id="load_to_snowflake"
+    snowflake = BashOperator(
+        task_id="load_to_snowflake",
+        bash_command="""
+        cd /opt/airflow/project &&
+        python -m src.snowflake_loader.load_gold_to_snowflake
+        """
     )
 
-    dbt = EmptyOperator(
-        task_id="run_dbt_models"
+    dbt_run = BashOperator(
+        task_id="dbt_run",
+        bash_command="""
+        cd /opt/airflow/project/olist_dbt &&
+        dbt run
+        """
+    )
+
+    dbt_test = BashOperator(
+        task_id="dbt_test",
+        bash_command="""
+        cd /opt/airflow/project/olist_dbt &&
+        dbt test
+        """
     )
 
     end = EmptyOperator(
@@ -61,6 +90,7 @@ with DAG(
         >> silver
         >> gold
         >> snowflake
-        >> dbt
+        >> dbt_run
+        >> dbt_test
         >> end
     )

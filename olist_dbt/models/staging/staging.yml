@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_dim_customers
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_dim_products
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_dim_sellers
+    columns:
+      - name: seller_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_fact_orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+
+  - name: stg_fact_payments
+    columns:
+      - name: order_id
+        tests:
+          - not_null

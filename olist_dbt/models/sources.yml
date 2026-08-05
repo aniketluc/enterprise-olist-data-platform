@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: gold
+    database: OLIST_DB
+    schema: GOLD
+
+    tables:
+      - name: DIM_CUSTOMERS
+      - name: DIM_PRODUCTS
+      - name: DIM_SELLERS
+      - name: FACT_ORDERS
+      - name: FACT_PAYMENTS
+      - name: FACT_ORDER_ITEMS

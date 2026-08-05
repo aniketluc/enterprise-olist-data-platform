@@ -83,3 +83,20 @@ def create_fact_orders(orders_df: DataFrame) -> DataFrame:
             "order_estimated_delivery_date",
         )
     )
+    
+def create_fact_order_items(order_items_df: DataFrame) -> DataFrame:
+    """
+    Create Order Items Fact Table.
+    """
+
+    return (
+        order_items_df.select(
+            "order_id",
+            "order_item_id",
+            "product_id",
+            "seller_id",
+            "shipping_limit_date",
+            "price",
+            "freight_value",
+        )
+    )

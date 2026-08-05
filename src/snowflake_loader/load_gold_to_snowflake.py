@@ -45,6 +45,7 @@ TABLES = {
     "dim_sellers": "DIM_SELLERS",
     "fact_orders": "FACT_ORDERS",
     "fact_payments": "FACT_PAYMENTS",
+    "fact_order_items": "FACT_ORDER_ITEMS",
 }
 
 for folder_name, snowflake_table in TABLES.items():
